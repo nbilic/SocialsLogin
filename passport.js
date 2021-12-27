@@ -1,7 +1,7 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const DiscordStrategy = require("passport-discord").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy;
-const TwitchStrategy = require("passport-twitch").Strategy;
+const TwitchStrategy = require("@d-fischer/passport-twitch").Strategy;
 
 require("dotenv").config();
 const passport = require("passport");
@@ -11,9 +11,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      //callbackURL: "/auth/google/callback",
-      callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/google/callback",
+      callbackURL: "/auth/google/callback",
+      /* callbackURL:
+        "https://twitch-socials-login.herokuapp.com" + "/auth/google/callback", */
     },
     function (accessToken, refreshToken, profile, done) {
       profile.method = "GOOGLE";
@@ -27,9 +27,9 @@ passport.use(
     {
       clientID: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
-      //callbackURL: "/auth/discord/callback",
-      callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/discord/callback",
+      callbackURL: "/auth/discord/callback",
+      /* callbackURL:
+        "https://twitch-socials-login.herokuapp.com" + "/auth/discord/callback", */
     },
     function (accessToken, refreshToken, profile, done) {
       profile.method = "DISCORD";
@@ -43,9 +43,9 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      //callbackURL: "/auth/github/callback",
-      callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/github/callback",
+      callbackURL: "/auth/github/callback",
+      /* callbackURL:
+        "https://twitch-socials-login.herokuapp.com" + "/auth/github/callback", */
     },
     function (accessToken, refreshToken, profile, done) {
       profile.method = "GITHUB";
@@ -59,13 +59,14 @@ passport.use(
     {
       clientID: process.env.TWITCH_CLIENT_ID,
       clientSecret: process.env.TWITCH_CLIENT_SECRET,
-      //callbackURL: "http://127.0.0.1:3000/auth/twitch/callback",
-      callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/twitch/callback",
+      callbackURL: "http://localhost:8080/auth/twitch/callback",
+      /*  callbackURL:
+        "https://twitch-socials-login.herokuapp.com" + "/auth/twitch/callback", */
 
       scope: "user_read",
     },
     function (accessToken, refreshToken, profile, done) {
+      console.log("called");
       profile.method = "TWITCH";
       done(null, profile);
     }
