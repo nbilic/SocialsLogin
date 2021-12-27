@@ -12,8 +12,6 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
-      /* callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/google/callback", */
     },
     function (accessToken, refreshToken, profile, done) {
       profile.method = "GOOGLE";
@@ -28,8 +26,6 @@ passport.use(
       clientID: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
       callbackURL: "/auth/discord/callback",
-      /* callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/discord/callback", */
     },
     function (accessToken, refreshToken, profile, done) {
       profile.method = "DISCORD";
@@ -44,8 +40,6 @@ passport.use(
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: "/auth/github/callback",
-      /* callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/github/callback", */
     },
     function (accessToken, refreshToken, profile, done) {
       profile.method = "GITHUB";
@@ -60,9 +54,6 @@ passport.use(
       clientID: process.env.TWITCH_CLIENT_ID,
       clientSecret: process.env.TWITCH_CLIENT_SECRET,
       callbackURL: "http://localhost:8080/auth/twitch/callback",
-      /*  callbackURL:
-        "https://twitch-socials-login.herokuapp.com" + "/auth/twitch/callback", */
-
       scope: "user_read",
     },
     function (accessToken, refreshToken, profile, done) {
